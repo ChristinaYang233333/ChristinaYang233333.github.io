@@ -52,7 +52,7 @@
   
   <h2>目录</h2>
   <ul class="directory">
-    <li><a href="#个人学习">个人学习</a></li>
+    <li><a href="#格物致知">格物致知</a></li>
     <li><a href="#我的项目">我的项目</a></li>
   </ul>
 </div>
@@ -60,14 +60,14 @@
 <div class="main-content">
   <h1>Christina的人类学习观察实录</h1>
   
-  <section id="个人学习">
+  <section id="格物致知">
     <h2>格物致知</h2>
     <p>
       我不断地学习新的东西。以下是我最近学习的内容：
     </p>
     <ul>
       <li>Python 数据分析与机器学习</li>
-      <li>前端开发（HTML, CSS, JavaScript）</li>
+      <li>法语</li>
       <li>深度学习与人工智能</li>
     </ul>
   </section>
