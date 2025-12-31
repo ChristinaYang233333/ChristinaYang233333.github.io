@@ -16,22 +16,16 @@ plugins:
   - jekyll-sitemap
 
 # 导航栏 (把你已有的页面挂上去)
-links:
+# ❌ 错误写法: links:
+# ✅ 正确写法:
+navigation:
   - title: 首页
     url: /
-  - title: 📚 小说
-    url: /novel/
+  - title: 📚 小说/随笔
+    url: /writing/
   - title: 📷 摄影
     url: /photo/
-  # ... 其他板块 ...
-  
-  # --- 新增这一行 ---
+  - title: 📝 学习笔记
+    url: /study/
   - title: 🙋‍♀️ 关于我
     url: /about/
-    
-# 底部版权与条款
-footer_links:
-  - title: 隐私政策
-    url: /privacy/
-  - title: 服务条款
-    url: /terms/
