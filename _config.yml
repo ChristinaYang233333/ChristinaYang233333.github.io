@@ -19,7 +19,9 @@ plugins:
 links:
   - title: 首页
     url: /
-  - title: 隐私政策
-    url: /privacy  # Jekyll 会自动把 privacy.md 渲染成漂亮的网页
-  - title: 服务条款
-    url: /terms    # 同上
+  - title: 📚 小说/随笔
+    url: /novel/
+  - title: 📷 摄影
+    url: /photo/
+  - title: 🗂️ 分类墙
+    url: /categories/
