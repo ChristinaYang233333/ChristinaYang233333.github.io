@@ -7,14 +7,6 @@ header:
   overlay_filter: 0.5
 ---
 
-<div style="text-align: center; margin-bottom: 40px;">
-  <h2 style="font-weight: 800; letter-spacing: 1px;">Welcome to Christina's World</h2>
-  <p style="color: #666; font-size: 1.1em;">
-    这里是我的数字花园。<br>
-    用文字构建世界，用镜头捕捉光影，用代码记录成长。
-  </p>
-</div>
-
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 50px;">
 
   <a href="/writing/" style="text-decoration: none; color: inherit; flex: 1 1 250px; min-width: 250px;">
