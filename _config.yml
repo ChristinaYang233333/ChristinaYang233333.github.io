@@ -12,20 +12,6 @@ baseurl: ""  # 主站必须留空
 remote_theme: mmistakes/so-simple-theme
 skin: /assets/css/skins/default.css # 你也可以换成 dark.css 或 solarized-light.css
 
-# -----------------------
-# 导航栏设置 (关键点：必须叫 navigation)
-# -----------------------
-navigation:
-  - title: 首页
-    url: /
-  - title: 📚 小说/随笔
-    url: /writing/
-  - title: 📷 摄影
-    url: /photo/
-  - title: 📝 学习笔记
-    url: /study/
-  - title: 🙋‍♀️ 关于我
-    url: /about/
 
 # -----------------------
 # 底部链接 (隐私条款)
