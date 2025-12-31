@@ -2,7 +2,7 @@ main:
   - title: "首页"
     url: /
   - title: "📚 小说/随笔"
-    url: /writing/
+    url: /posts/
   - title: "📷 摄影"
     url: /photo/
   - title: "📝 学习笔记"
