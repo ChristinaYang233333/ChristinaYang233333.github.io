@@ -1,6 +1,6 @@
 main:
-  - title: "首页"
-    url: /
+  - title: "分类"
+    url: /Categories/
   - title: "📚 小说/随笔"
     url: /posts/
   - title: "📷 摄影"
