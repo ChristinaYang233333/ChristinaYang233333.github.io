@@ -1,2 +1,15 @@
-# Use Term
-This app is for personal use.
+---
+layout: page
+title: 服务条款
+permalink: /terms/
+---
+
+# 服务条款
+
+**最后更新日期：2025年1月1日**
+
+## 1. 版权声明
+本网站发布的所有小说章节、摄影作品均为原创，未经授权禁止转载...
+
+## 2. 免责声明
+本网站内容仅供娱乐和阅读...
