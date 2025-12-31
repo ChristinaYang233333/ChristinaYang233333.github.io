@@ -30,6 +30,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-include-cache   
 
 # -----------------------
 # 其他设置
