@@ -11,6 +11,7 @@ baseurl: ""  # 主站必须留空
 # -----------------------
 remote_theme: mmistakes/so-simple-theme
 skin: /assets/css/skins/default.css # 你也可以换成 dark.css 或 solarized-light.css
+locale: "zh-CN"
 
 
 # -----------------------
@@ -29,8 +30,8 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-include-cache   
+  - jekyll-include-cache
+  - jekyll-remote-theme
 
 # -----------------------
 # 其他设置
