@@ -1,0 +1,11 @@
+main:
+  - title: "首页"
+    url: /
+  - title: "📚 小说/随笔"
+    url: /writing/
+  - title: "📷 摄影"
+    url: /photo/
+  - title: "📝 学习笔记"
+    url: /study/
+  - title: "🙋‍♀️ 关于我"
+    url: /about/
