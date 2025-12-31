@@ -1,27 +1,52 @@
-title: Christina's World
-description: 我的数字花园，记录小说、摄影与技术。
-locale: zh-CN
-url: "hhttps://www.christinayxr.com"
+# -----------------------
+# 1. 站点核心设置 (Site Settings)
+# -----------------------
+title: "Christina's World"
+description: "我的数字花园，记录小说、摄影与技术。"
+locale: "zh-CN"
+
+# 【关键修复】修正了之前的拼写错误 (hhttps -> https)
+url: "https://www.christinayxr.com"
+
+# 自定义域名必须留空
 baseurl: ""
 
+# -----------------------
+# 2. 主题与外观 (Theme & Skin)
+# -----------------------
 remote_theme: mmistakes/so-simple-theme
-skin: /assets/css/skins/default.css
+skin: "/assets/css/skins/default.css"
 
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-include-cache
-  - jekyll-remote-theme
-  - jekyll-paginate
-  - jekyll-redirect-from
+# -----------------------
+# 3. 故障排除设置 (Troubleshooting)
+# -----------------------
+# 【重要】为了让菜单按钮恢复点击反应，暂时强制关闭搜索。
+# 菜单修好后，可以将这里改为 true。
+search_enabled: false
+search_full_content: false
 
+# -----------------------
+# 4. 文章与构建设置 (Build & Permalink)
+# -----------------------
 markdown: kramdown
 highlighter: rouge
 permalink: /:categories/:title/
 paginate: 10
-search_full_content: false
 
+# -----------------------
+# 5. 作者信息 (Author)
+# -----------------------
+author:
+  name: Christina
+  email: xinran.yang97@qq.com
+  links:
+    - title: GitHub
+      url: "https://github.com/ChristinaYang233333"
+      icon: fab fa-github-square
+
+# -----------------------
+# 6. 默认配置 (Defaults)
+# -----------------------
 defaults:
   - scope:
       path: ""
@@ -33,16 +58,23 @@ defaults:
       sidebar:
         nav: "main"
 
-author:
-  name: Christina
-  email: xinran.yang97@qq.com
-  links:
-    - title: GitHub
-      url: https://github.com/ChristinaYang233333
-      icon: fab fa-github-square
-
+# -----------------------
+# 7. 底部链接 (Footer)
+# -----------------------
 footer_links:
   - title: 隐私政策
     url: /privacy/
   - title: 服务条款
     url: /terms/
+
+# -----------------------
+# 8. 插件列表 (Plugins)
+# -----------------------
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+  - jekyll-remote-theme
+  - jekyll-paginate
+  - jekyll-redirect-from
