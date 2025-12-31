@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 首页
+title: 板块
 author_profile: true
 header:
   overlay_image: /assets/images/header.jpg # (可选)如果你有大图，可以填在这里做背景
