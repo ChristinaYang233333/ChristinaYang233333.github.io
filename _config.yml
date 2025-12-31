@@ -28,3 +28,10 @@ links:
   # --- 新增这一行 ---
   - title: 🙋‍♀️ 关于我
     url: /about/
+    
+# 底部版权与条款
+footer_links:
+  - title: 隐私政策
+    url: /privacy/
+  - title: 服务条款
+    url: /terms/
