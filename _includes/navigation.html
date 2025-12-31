@@ -1,0 +1,19 @@
+<nav class="nav__list">
+  {% if site.data.navigation.main %}
+    <input id="ac-toc" name="accordion-toc" type="checkbox" />
+    <label for="ac-toc">
+      {% if site.data.ui-text[site.locale].menu_label %}
+        {{ site.data.ui-text[site.locale].menu_label }}
+      {% else %}
+        Menu
+      {% endif %}
+    </label>
+    <ul class="nav__items">
+      {% for link in site.data.navigation.main %}
+        <li>
+          <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+</nav>
