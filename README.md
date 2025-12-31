@@ -1,102 +1,25 @@
-<head>
-  <style>
-    /* 设置左侧分栏 */
-    .sidebar {
-      width: 25%;
-      float: left;
-      background-color: #f4f4f4;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+# Christina's World (个人主页)
 
-    /* 设置右侧内容区 */
-    .main-content {
-      width: 70%;
-      float: left;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+这里是 Christina 的个人网站源代码仓库。
 
-    /* 清除浮动 */
-    .clear {
-      clear: both;
-    }
+👋 **[点击这里访问我的网站 (Live Site)](https://www.christinayxr.com)**
 
-    /* 设置目录的样式 */
-    .directory {
-      list-style-type: none;
-      padding: 0;
-    }
+## 🏠 关于本项目
+这是我的个人数字花园，用于记录和分享我的创作与生活。网站主要包含以下板块：
+* **📚 小说**：我的科幻与现实主义题材连载小说。
+* **📷 摄影**：使用 Fujifilm 拍摄的街头与风景。
+* **📝 笔记**：关于全栈开发、Jekyll 与云计算的学习路径。
 
-    .directory li {
-      margin: 10px 0;
-    }
+## 🛠️ 技术栈 (Tech Stack)
+本网站完全开源，基于以下技术构建：
+* **核心引擎**: [Jekyll](https://jekyllrb.com/)
+* **托管服务**: [GitHub Pages](https://pages.github.com/)
+* **主题皮肤**: [So Simple Theme](https://github.com/mmistakes/so-simple-theme) by Michael Rose
+* **评论系统**: (如果你以后加了 Giscus 可以写在这里，没有就删掉)
 
-    .directory li a {
-      text-decoration: none;
-      color: #007bff;
-    }
+## ⚖️ 版权说明
+除另有说明外，本网站上的文字与图片内容均为 Christina 原创。
+代码部分遵循 MIT 协议，内容部分遵循 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) 协议。
 
-    .directory li a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
-<div class="sidebar">
-  <h2>个人介绍</h2>
-  <p>
-    作为本科学习英语语言文学，硕士学习管理学的大龄毕业生，在个人爱好和（求职压力）的激励下，准备用本网站开启持续学习的记录。<br> 主要分为三个模块，格物致知记录了我的学习进程，包括语言学习和基于Python的数据分析；读书笔记板块是为了鞭策我继续阅读，深入思考；完成的数据分析或者市场研究报告会放在个人项目里。
-  </p>
-  
-  <h2>目录</h2>
-  <ul class="directory">
-    <li><a href="#格物致知">格物致知</a></li>
-    <li><a href="#读书笔记">读书笔记</a></li>
-    <li><a href="#我的项目">我的项目</a></li>
-  </ul>
-</div>
-
-<div class="main-content">
-  <h1>人类学习观察实录</h1>
-  
-  <section id="格物致知">
-    <h2>格物致知</h2>
-    <p>
-      格物致知取自朱熹的理学论：研究每一个事物之理。这里代之我所学习的科目。
-    </p>
-    <ul>
-      <li>英语笔译/口译</li>
-      <li>法语</li>
-      <li>Python 数据分析与机器学习</li>
-    </ul>
-  </section>
-
-
-  <section id="读书笔记">
-    <h2>读书笔记</h2>
-    <p>
-      书摘，书评和个人感想：
-    </p>
-    <ul>
-      <li>When Breath Becomes Air</li>
-      <li>《始于极限》</li>
-      <li>《Python编程：从入门到实践》</li>
-    </ul>
-  </section>
-
-  <section id="我的项目">
-    <h2>我的项目</h2>
-    <p>
-      这里是我参与的一些项目：
-    </p>
-    <ul>
-      <li><strong>项目 1：</strong> 基于 Python 的数据分析项目，使用 Pandas 和 Matplotlib 完成数据清洗和可视化。</li>
-      <li><strong>项目 2：</strong> 一个简单的博客网站，使用 Flask 和 SQLite 构建，支持基本的文章发布和评论功能。</li>
-      <li><strong>项目 3：</strong> 基于 React 的前端项目，使用 Redux 管理应用状态，提供动态内容显示。</li>
-    </ul>
-  </section>
-</div>
-
-<div class="clear"></div>
-
+---
+*Last updated: 2025*
