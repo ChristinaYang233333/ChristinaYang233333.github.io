@@ -19,9 +19,12 @@ plugins:
 links:
   - title: 首页
     url: /
-  - title: 📚 小说/随笔
+  - title: 📚 小说
     url: /novel/
   - title: 📷 摄影
     url: /photo/
-  - title: 🗂️ 分类墙
-    url: /categories/
+  # ... 其他板块 ...
+  
+  # --- 新增这一行 ---
+  - title: 🙋‍♀️ 关于我
+    url: /about/
