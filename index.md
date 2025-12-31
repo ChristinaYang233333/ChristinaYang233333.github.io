@@ -2,17 +2,53 @@
 layout: home
 title: 首页
 author_profile: true
+header:
+  overlay_image: /assets/images/header.jpg # (可选)如果你有大图，可以填在这里做背景
+  overlay_filter: 0.5
 ---
 
-👋 **你好，我是 Christina。**
+<div style="text-align: center; margin-bottom: 40px;">
+  <h2 style="font-weight: 800; letter-spacing: 1px;">Welcome to Christina's World</h2>
+  <p style="color: #666; font-size: 1.1em;">
+    这里是我的数字花园。<br>
+    用文字构建世界，用镜头捕捉光影，用代码记录成长。
+  </p>
+</div>
 
-欢迎来到我的数字花园。这里是我存放思想与创作的地方，你可以在这里找到：
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 50px;">
 
-* **[📚 连载小说](/novel/)**：我的科幻与现实主义创作
-* **[📷 摄影作品](/photo/)**：通过镜头观察世界的切片
-* **[📝 学习笔记](/categories/#学习)**：全栈开发与技术探索之路
+  <a href="/writing/" style="text-decoration: none; color: inherit; flex: 1 1 250px; min-width: 250px;">
+    <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" 
+         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.1)';" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.05)';">
+      <div style="font-size: 3em; margin-bottom: 10px;">📚</div>
+      <h3 style="margin: 0; font-size: 1.2em; font-weight: bold;">小说与随笔</h3>
+      <p style="font-size: 0.9em; color: #888; margin-top: 8px;">我的科幻连载与生活感悟</p>
+    </div>
+  </a>
 
----
+  <a href="/photo/" style="text-decoration: none; color: inherit; flex: 1 1 250px; min-width: 250px;">
+    <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" 
+         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.1)';" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.05)';">
+      <div style="font-size: 3em; margin-bottom: 10px;">📷</div>
+      <h3 style="margin: 0; font-size: 1.2em; font-weight: bold;">光影瞬间</h3>
+      <p style="font-size: 0.9em; color: #888; margin-top: 8px;">Fujifilm 街拍作品集</p>
+    </div>
+  </a>
 
-## 🆕 最新动态
-*(以下是最近更新的文章)*
+  <a href="/study/" style="text-decoration: none; color: inherit; flex: 1 1 250px; min-width: 250px;">
+    <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" 
+         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.1)';" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.05)';">
+      <div style="font-size: 3em; margin-bottom: 10px;">📝</div>
+      <h3 style="margin: 0; font-size: 1.2em; font-weight: bold;">学习笔记</h3>
+      <p style="font-size: 0.9em; color: #888; margin-top: 8px;">全栈开发与技术探索</p>
+    </div>
+  </a>
+
+</div>
+
+<hr style="border: 0; height: 1px; background: #eee; margin: 40px 0;">
+
+<h3 style="text-align: center; color: #333;">✨ 最新更新</h3>
