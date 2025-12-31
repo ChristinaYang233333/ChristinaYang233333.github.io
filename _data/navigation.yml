@@ -1,11 +1,5 @@
 main:
-  - title: "首页"
+  - title: Home
     url: /
-  - title: "📚 小说/随笔"
-    url: /writing/    # ✅ 必须和 writing.md 里的 permalink 一致
-  - title: "📷 摄影"
-    url: /photo/      # ⚠️ 记得一会要创建 photo.md
-  - title: "📝 学习笔记"
-    url: /study/      # ⚠️ 记得一会要创建 study.md
-  - title: "🙋‍♀️ 关于我"
-    url: /about/      # ✅ 你之前好像创建过这个
+  - title: About
+    url: /about/
