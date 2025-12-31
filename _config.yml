@@ -1,23 +1,20 @@
-title: Hello Visitor
-description: "欢迎来到我的个人主页"
-url: "https://www.christinayxr.com"
-baseurl: ""   # ⚠️ 极其重要！主站这里必须留空，不能填任何东西
+# -----------------------
+# 核心设置
+# -----------------------
+title: Christina's World
+description: 我的数字花园，记录小说、摄影与技术。
+url: "https://christinayang233333.github.io" 
+baseurl: ""  # 主站必须留空
 
-# 启用主题
+# -----------------------
+# 主题设置
+# -----------------------
 remote_theme: mmistakes/so-simple-theme
+skin: /assets/css/skins/default.css # 你也可以换成 dark.css 或 solarized-light.css
 
-# 皮肤 (选一个你喜欢的)
-skin: /assets/css/skins/default.css
-
-# 插件
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-# 导航栏 (把你已有的页面挂上去)
-# ❌ 错误写法: links:
-# ✅ 正确写法:
+# -----------------------
+# 导航栏设置 (关键点：必须叫 navigation)
+# -----------------------
 navigation:
   - title: 首页
     url: /
@@ -29,3 +26,28 @@ navigation:
     url: /study/
   - title: 🙋‍♀️ 关于我
     url: /about/
+
+# -----------------------
+# 底部链接 (隐私条款)
+# -----------------------
+footer_links:
+  - title: 隐私政策
+    url: /privacy/
+  - title: 服务条款
+    url: /terms/
+
+# -----------------------
+# 插件与构建设置
+# -----------------------
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-gist
+
+# -----------------------
+# 其他设置
+# -----------------------
+search: true           # 开启搜索功能
+read_time: true        # 显示阅读时间
+words_per_minute: 200
