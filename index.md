@@ -6,6 +6,10 @@ header:
   overlay_image: /assets/images/header.jpg # (可选)如果你有大图，可以填在这里做背景
   overlay_filter: 0.5
 ---
+h3>DEBUG 模式：检查菜单数据</h3>
+<pre>
+数据读取状态: {{ site.data.navigation.main | inspect }}
+</pre>
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 50px;">
 
