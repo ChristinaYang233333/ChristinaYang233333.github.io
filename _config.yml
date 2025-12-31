@@ -1,41 +1,72 @@
-# -----------------------
-# 核心设置
-# -----------------------
-title: Christina's World
-description: 我的数字花园，记录小说、摄影与技术。
-#url: "https://christinayxr.com" 
-baseurl: ""  # 主站必须留空
+# ==========================================================
+# Christina's World - 核心配置文件
+# 基于 So Simple Theme 官方示例修改
+# ==========================================================
 
-# -----------------------
-# 主题设置
-# -----------------------
+# 1. 站点基本信息
+# ----------------------------------------------------------
+title: "Christina's World"
+description: "我的数字花园，记录小说、摄影与技术。"
+locale: "zh-CN"                 # 语言设为中文
+url: "https://christinayxr.com" # 你的新域名
+baseurl: ""                     # ✅ 必须留空！否则 CSS 找不到
+# logo:  # "/images/logo.png"     # 如果你有 logo 图片，上传到 assets/images 后在这里填路径，没有就注释掉
+
+# 2. 主题与外观 (CSS 救星)
+# ----------------------------------------------------------
 remote_theme: mmistakes/so-simple-theme@3.2.0
-skin: /assets/css/skins/default.css # 你也可以换成 dark.css 或 solarized-light.css
-locale: "zh-CN"
+skin: "/assets/css/skins/default.css" # 皮肤文件，也可以换成 air.css 或 dark.css
 
+# 3. 插件设置 (功能核心)
+# ----------------------------------------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache   # ✅ 必须有这个，导航栏才不会报错
+  - jekyll-remote-theme    # ✅ 必须有这个，主题才能下载
+  - jekyll-paginate        # 分页功能
+  - jekyll-redirect-from   # 重定向功能
 
-# -----------------------
-# 底部链接 (隐私条款)
-# -----------------------
+# 4. 构建设置
+# ----------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/  # ✅ 文章链接格式：域名/分类/标题/
+paginate: 10                     # 每页显示 10 篇文章
+search_full_content: false       # 搜索时不搜索全文（加快速度）
+
+# 5. 默认配置 (Defaults) - ✨ 让文章变漂亮的魔法
+# ----------------------------------------------------------
+# 这段代码的意思是：只要是在 _posts 文件夹里的文件，
+# 自动应用 layout: post，自动开启评论，自动开启分享。
+# 你以后写文章甚至可以偷懒不写 layout: post 了。
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true  # 如果你以后加评论插件
+      share: true     # 开启底部的分享按钮
+      sidebar:        # 侧边栏设置
+        nav: "main"   # 如果你想在文章页左侧也显示导航
+
+# 6. 作者信息 (显示在文章底部)
+# ----------------------------------------------------------
+author:
+  name: "Christina"
+  # picture: /assets/images/avatar.jpg  # 以后可以上传你的头像
+  email: xinran.yang97@qq.com
+  links:
+    - title: GitHub
+      url: https://github.com/ChristinaYang233333
+      icon: fab fa-github-square
+
+# 7. 底部链接 (Footer)
+# ----------------------------------------------------------
 footer_links:
   - title: 隐私政策
     url: /privacy/
   - title: 服务条款
     url: /terms/
-
-# -----------------------
-# 插件与构建设置
-# -----------------------
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-include-cache
-  - jekyll-remote-theme
-
-# -----------------------
-# 其他设置
-# -----------------------
-search: true           # 开启搜索功能
-read_time: true        # 显示阅读时间
-words_per_minute: 200
