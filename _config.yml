@@ -1,0 +1,25 @@
+title: Hello Visitor
+description: "欢迎来到我的个人主页"
+url: "https://www.christinayxr.com"
+baseurl: ""   # ⚠️ 极其重要！主站这里必须留空，不能填任何东西
+
+# 启用主题
+remote_theme: mmistakes/so-simple-theme
+
+# 皮肤 (选一个你喜欢的)
+skin: /assets/css/skins/default.css
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# 导航栏 (把你已有的页面挂上去)
+links:
+  - title: 首页
+    url: /
+  - title: 隐私政策
+    url: /privacy  # Jekyll 会自动把 privacy.md 渲染成漂亮的网页
+  - title: 服务条款
+    url: /terms    # 同上
