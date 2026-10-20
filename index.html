@@ -1,0 +1,77 @@
+---
+layout: page
+title: 今日对话
+---
+
+<!-- 1. 全屏开屏闪出容器 -->
+<div id="splash-screen" style="
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #050814; z-index: 99999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: opacity 1.2s ease-out;
+    pointer-events: auto;
+">
+    <div id="quote-text" style="
+        font-size: 1.4rem; max-width: 80%; text-align: center;
+        opacity: 0; transition: opacity 1.2s ease-in; line-height: 1.8; letter-spacing: 1px;
+    "></div>
+    <div id="quote-date" style="
+        font-size: 0.9rem; color: #8B949E; margin-top: 20px;
+        opacity: 0; transition: opacity 1.2s ease-in;
+    "></div>
+</div>
+
+<!-- 2. 页面正常留白正文 -->
+<div style="margin-top: 60px; text-align: center; color: #8B949E;">
+  <p>✨ 今天的思绪沉淀与留白。</p>
+</div>
+
+<!-- 3. 执行逻辑 -->
+<script>
+(function() {
+    // 读取 _data/highlights.json
+    let quotes = [];
+    {% if site.data.highlights %}
+      quotes = {{ site.data.highlights | jsonify }};
+    {% endif %}
+
+    // 如果数据为空，使用保底测试句，确保绝对能看到闪出动画
+    if (!quotes || quotes.length === 0) {
+        quotes = [{
+            "text": "写小说最难的其实不是搭建世界观框架，而是如何让角色在日常不经意的对话中，自然地长出血肉。",
+            "date": "2026-09-18"
+        }];
+    }
+
+    // 随机抽取
+    const selected = quotes[Math.floor(Math.random() * quotes.length)];
+    
+    // 渲染页面元素
+    window.addEventListener('DOMContentLoaded', function() {
+        const textEl = document.getElementById('quote-text');
+        const dateEl = document.getElementById('quote-date');
+        const splashEl = document.getElementById('splash-screen');
+
+        if (textEl && dateEl && splashEl) {
+            textEl.innerText = "「 " + selected.text + " 」";
+            dateEl.innerText = "—— " + selected.date;
+
+            // 0.2 秒后渐渐浮现文字
+            setTimeout(function() {
+                textEl.style.opacity = '1';
+                dateEl.style.opacity = '1';
+            }, 200);
+
+            // 3 秒后全屏黑幕淡出
+            setTimeout(function() {
+                splashEl.style.opacity = '0';
+                splashEl.style.pointerEvents = 'none'; // 防止遮挡下方点击
+                setTimeout(function() {
+                    splashEl.style.display = 'none';
+                }, 1200);
+            }, 3000);
+        }
+    });
+})();
+</script>
