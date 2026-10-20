@@ -1,80 +1,44 @@
-# -----------------------
-# 1. 站点核心设置 (Site Settings)
-# -----------------------
-title: "Christina's World"
-description: "我的数字花园，记录小说、摄影与技术。"
-locale: "zh-CN"
-
-# 【关键修复】修正了之前的拼写错误 (hhttps -> https)
-url: "https://www.christinayxr.com"
-
-# 自定义域名必须留空
+# ==========================================================================
+# 站点基础信息
+# ==========================================================================
+title: "Christina的数字花园"
+description: "记录日常不经意的对话与思考脉络，在海量数据中寻找思绪微光。"
+url: "https://christinayxr.com"
 baseurl: ""
 
-# -----------------------
-# 2. 主题与外观 (Theme & Skin)
-# -----------------------
-remote_theme: mmistakes/so-simple-theme
-skin: "/assets/css/skins/default.css"
-
-# -----------------------
-# 3. 故障排除设置 (Troubleshooting)
-# -----------------------
-# 【重要】为了让菜单按钮恢复点击反应，暂时强制关闭搜索。
-# 菜单修好后，可以将这里改为 true。
-search_enabled: false
-search_full_content: false
-
-# -----------------------
-# 4. 文章与构建设置 (Build & Permalink)
-# -----------------------
-markdown: kramdown
-highlighter: rouge
-permalink: /:categories/:title/
-paginate: 10
-
-# -----------------------
-# 5. 作者信息 (Author)
-# -----------------------
+# ==========================================================================
+# 作者信息
+# ==========================================================================
 author:
-  name: Christina
-  email: xinran.yang97@qq.com
-  links:
-    - title: GitHub
-      url: "https://github.com/ChristinaYang233333"
-      icon: fab fa-github-square
+  name: "Christina"
+  # 如果你有头像图片，可以上传到 images 文件夹并在这里填入路径，如 "/images/avatar.png"
+  picture: "" 
+  bio: "小说作者 / 数据拾荒者"
 
-# -----------------------
-# 6. 默认配置 (Defaults)
-# -----------------------
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      comments: true
-      share: true
-      sidebar:
-        nav: "main"
+# ==========================================================================
+# 主题与外观设置
+# ==========================================================================
+# 保持你现有的 So Simple 主题
+theme: so-simple-theme
 
-# -----------------------
-# 7. 底部链接 (Footer)
-# -----------------------
-footer_links:
-  - title: 隐私政策
-    url: /privacy/
-  - title: 服务条款
-    url: /terms/
+# 关键设置：激活顶部菜单栏！
+# 这里告诉主题去读取 _data/navigation.yml 文件里名为 "main" 的列表
+navigation_header: main
 
-# -----------------------
-# 8. 插件列表 (Plugins)
-# -----------------------
+# ==========================================================================
+# 插件配置 (GitHub Pages 默认推荐)
+# ==========================================================================
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-include-cache
-  - jekyll-remote-theme
   - jekyll-paginate
-  - jekyll-redirect-from
+
+# 排除不需要编译的系统文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
