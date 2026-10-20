@@ -1,9 +1,15 @@
 ---
-layout: page
-title: 今日对话
+# 1. 切换为 So Simple 的 home 布局
+layout: home
+title: "欣然的数据花园"
+
+# 2. 配置 home 布局特有参数
+entries_layout: grid   # 文章展示样式：list (单列列表) 或 grid (多格卡片)
+posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
+# paginate: true       # 如需开启分页可解开此行注释
 ---
 
-<!-- 1. 全屏开屏闪出容器 -->
+<!-- 全屏开屏闪出黑幕容器 (通过 fixed 悬浮在 home 布局最上方) -->
 <div id="splash-screen" style="
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background-color: #050814; z-index: 99999;
@@ -22,21 +28,14 @@ title: 今日对话
     "></div>
 </div>
 
-<!-- 2. 页面正常留白正文 -->
-<div style="margin-top: 60px; text-align: center; color: #8B949E;">
-  <p>✨ 今天的思绪沉淀与留白。</p>
-</div>
-
-<!-- 3. 执行逻辑 -->
+<!-- 开屏闪出逻辑控制脚本 -->
 <script>
 (function() {
-    // 读取 _data/highlights.json
     let quotes = [];
     {% if site.data.highlights %}
       quotes = {{ site.data.highlights | jsonify }};
     {% endif %}
 
-    // 如果数据为空，使用保底测试句，确保绝对能看到闪出动画
     if (!quotes || quotes.length === 0) {
         quotes = [{
             "text": "写小说最难的其实不是搭建世界观框架，而是如何让角色在日常不经意的对话中，自然地长出血肉。",
@@ -44,10 +43,8 @@ title: 今日对话
         }];
     }
 
-    // 随机抽取
     const selected = quotes[Math.floor(Math.random() * quotes.length)];
     
-    // 渲染页面元素
     window.addEventListener('DOMContentLoaded', function() {
         const textEl = document.getElementById('quote-text');
         const dateEl = document.getElementById('quote-date');
@@ -57,20 +54,19 @@ title: 今日对话
             textEl.innerText = "「 " + selected.text + " 」";
             dateEl.innerText = "—— " + selected.date;
 
-            // 0.2 秒后渐渐浮现文字
             setTimeout(function() {
                 textEl.style.opacity = '1';
                 dateEl.style.opacity = '1';
             }, 200);
 
-            // 3 秒后全屏黑幕淡出
+            // 3.5秒后黑幕淡出，无缝露出底层的 So Simple home 页面
             setTimeout(function() {
                 splashEl.style.opacity = '0';
-                splashEl.style.pointerEvents = 'none'; // 防止遮挡下方点击
+                splashEl.style.pointerEvents = 'none';
                 setTimeout(function() {
                     splashEl.style.display = 'none';
                 }, 1200);
-            }, 3000);
+            }, 3500);
         }
     });
 })();
