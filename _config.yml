@@ -7,32 +7,40 @@ url: "https://christinayxr.com"
 baseurl: ""
 
 # ==========================================================================
+# 远程主题配置 (核心修正：GitHub Pages 托管必须启用 remote_theme)
+# ==========================================================================
+remote_theme: mmistakes/so-simple-theme
+skin: "/assets/css/skins/default.css"
+locale: zh-CN
+date_format: "%Y-%m-%d"
+
+# 激活顶部导航菜单
+navigation_header: main
+
+# ==========================================================================
 # 作者信息
 # ==========================================================================
 author:
   name: "Christina"
-  picture: "" 
+  picture: ""
   bio: "小说作者 / 数据拾荒者"
 
 # ==========================================================================
-# 远程主题设置 (关键修正)
+# 构建与插件设置
 # ==========================================================================
-# 移除原有的 theme: so-simple-theme，改用 GitHub 仓库路径格式：作者名/仓库名
-remote_theme: mmistakes/so-simple-theme
+permalink: /:categories/:title/
+markdown: kramdown
+feed:
+  path: atom.xml
 
-# 激活顶部菜单栏
-navigation_header: main
-
-# ==========================================================================
-# 插件配置
-# ==========================================================================
 plugins:
-  - jekyll-remote-theme # 必须显式声明加载远程主题插件
+  - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
   - jekyll-paginate
 
-# 排除不需要编译的系统文件
+# 排除不需要编译的配置文件
 exclude:
   - Gemfile
   - Gemfile.lock
