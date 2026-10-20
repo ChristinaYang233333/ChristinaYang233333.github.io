@@ -15,8 +15,6 @@ skin: "/assets/css/skins/default.css"
 locale: zh-CN
 date_format: "%Y-%m-%d"
 
-# 激活顶部导航菜单
-navigation_header: main
 
 # ==========================================================================
 # 作者信息
