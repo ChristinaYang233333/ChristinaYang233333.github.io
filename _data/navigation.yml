@@ -1,5 +1,11 @@
 main:
-  - title: Home
+  - title: "今日对话"
     url: /
-  - title: About
+  - title: "思考话题"
+    url: /topics/
+  - title: "年度统计"
+    url: /stats/
+  - title: "图库"
+    url: /gallery/
+  - title: "关于作者"
     url: /about/
