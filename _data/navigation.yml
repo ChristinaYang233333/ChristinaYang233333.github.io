@@ -1,10 +1,9 @@
-- title: Home
-  url: /
-# - title: 今日对话
-#   url: /topics/
-# - title: 年度统计
-#   url: /stats/
-# - title: 图库
-#   url: /gallery/
-# - title: 关于作者
-#   url: /about/
+
+- title: 今日对话
+  url: /topics/
+- title: 年度统计
+  url: /stats/
+- title: 图库
+  url: /gallery/
+- title: 关于作者
+  url: /about/
