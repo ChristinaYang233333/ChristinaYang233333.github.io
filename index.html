@@ -3,12 +3,27 @@
 layout: home
 
 # 2. 配置 home 布局特有参数
-entries_layout: list   # 文章展示样式：list (单列列表) 或 grid (多格卡片)
-posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
-# paginate: true       # 如需开启分页可解开此行注释
+entries_layout: list
+posts_limit: 5
 ---
 
-<!-- 全屏开屏闪出黑幕容器 -->
+<!-- 1. 在页面最顶部，先从 JSON 中进行随机抽签 -->
+<script>
+  var myQuotes = [];
+  {% if site.data.highlight %}
+    myQuotes = {{ site.data.highlight | jsonify }};
+  {% endif %}
+  
+  if (!myQuotes || myQuotes.length === 0) {
+      myQuotes = [{"text": "除了焦虑型依恋，还有一个原因，就是我觉得他们容易撼动，进而肯定了我的存在。", "date": "2026-08-14", "sender": "Christina"}];
+  }
+  
+  // 抽出唯一确定的一条数据
+  var selectedQuote = myQuotes[Math.floor(Math.random() * myQuotes.length)];
+</script>
+
+
+<!-- 2. 全屏开屏黑幕容器 (直接在需要的地方打印 selectedQuote) -->
 <div id="splash-screen" style="
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background-color: #050814; z-index: 99999;
@@ -17,64 +32,64 @@ posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
     transition: opacity 1.2s ease-out;
     pointer-events: auto;
 ">
-    <div id="quote-text" style="
-        font-size: 1.4rem; max-width: 80%; text-align: center;
-        opacity: 0; transition: opacity 1.2s ease-in; line-height: 1.8; letter-spacing: 1px;
-    "></div>
-    <div id="quote-date" style="
-        font-size: 0.9rem; color: #8B949E; margin-top: 20px;
-        opacity: 0; transition: opacity 1.2s ease-in;
-    "></div>
+    <!-- 加入简单的 CSS 动画类让文字淡入 -->
+    <style>
+      .fade-in { animation: textFadeIn 1.2s ease-in forwards; opacity: 0; }
+      @keyframes textFadeIn { to { opacity: 1; } }
+    </style>
+    
+    <div class="fade-in" style="font-size: 1.4rem; max-width: 80%; text-align: center; line-height: 1.8; letter-spacing: 1px;">
+        「 <script>document.write(selectedQuote.text);</script> 」
+    </div>
+    <div class="fade-in" style="font-size: 0.9rem; color: #8B949E; margin-top: 20px; animation-delay: 0.2s;">
+        —— <script>document.write(selectedQuote.date + (selectedQuote.sender ? " (" + selectedQuote.sender + ")" : ""));</script>
+    </div>
 </div>
 
-<!-- 开屏闪出逻辑控制脚本 -->
+
+<!-- 3. 首页正文区：同样使用 document.write 直接原地打印相同的数据 -->
+<section class="dialogue-highlights" style="margin-bottom: 3em;">
+  <h2 class="archive__subtitle" style="border-bottom: 1px solid var(--border-color, #e0e0e0); padding-bottom: 0.3em; margin-bottom: 1em;">
+    💬 灵犀微光
+  </h2>
+  
+  <div class="entries-list">
+    <article class="archive__item" style="
+        background: var(--background-color, #fff);
+        border: 1px solid var(--border-color, #eaeaea);
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    ">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-size: 0.85rem; color: #666;">
+        <span style="font-weight: 600; color: var(--primary-color, #007acc);">
+          <script>document.write(selectedQuote.sender || "未知");</script>
+        </span>
+        <span>
+          <script>document.write(selectedQuote.date);</script>
+        </span>
+      </div>
+      <div style="font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        <script>document.write(selectedQuote.text);</script>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- 4. 极简版控制脚本：现在只负责 5.5 秒后关掉黑幕 -->
 <script>
-(function() {
-    let quotes = [];
-    
-    // 读取 _data/highlight.json
-    {% if site.data.highlight %}
-      quotes = {{ site.data.highlight | jsonify }};
-    {% endif %}
-
-    // 默认保底数据，仅保留 text, date, sender
-    if (!quotes || quotes.length === 0) {
-        quotes = [{
-            "text": "除了焦虑型依恋，还有一个原因，就是我觉得他们容易撼动，进而肯定了我的存在。同时容易撼动，让我觉得，有可能性他们能改变。这对我一个很厉害的女性来说，是很大的诱惑。",
-            "date": "2026-08-14",
-            "sender": "Christina"
-        }];
+window.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.getElementById('splash-screen');
+    if (splashScreen) {
+        setTimeout(function() {
+            splashScreen.style.opacity = '0';
+            splashScreen.style.pointerEvents = 'none';
+            setTimeout(function() {
+                splashScreen.style.display = 'none';
+            }, 1200);
+        }, 5500);
     }
-
-    const selected = quotes[Math.floor(Math.random() * quotes.length)];
-    
-    window.addEventListener('DOMContentLoaded', function() {
-        const textEl = document.getElementById('quote-text');
-        const dateEl = document.getElementById('quote-date');
-        const splashEl = document.getElementById('splash-screen');
-
-        if (textEl && dateEl && splashEl) {
-            // 仅提取 text 进行渲染
-            textEl.innerText = "「 " + selected.text + " 」";
-            
-            // 动态读取 sender，如果不为空则自动加上括号，例如：—— 2026-08-14 (May)
-            let senderName = selected.sender ? " (" + selected.sender + ")" : "";
-            dateEl.innerText = "—— " + selected.date + senderName;
-
-            setTimeout(function() {
-                textEl.style.opacity = '1';
-                dateEl.style.opacity = '1';
-            }, 200);
-
-            // 3.5秒后黑幕淡出
-            setTimeout(function() {
-                splashEl.style.opacity = '0';
-                splashEl.style.pointerEvents = 'none';
-                setTimeout(function() {
-                    splashEl.style.display = 'none';
-                }, 1200);
-            }, 3500);
-        }
-    });
-})();
+});
 </script>
