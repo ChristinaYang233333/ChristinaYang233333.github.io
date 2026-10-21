@@ -8,7 +8,7 @@ posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
 # paginate: true       # 如需开启分页可解开此行注释
 ---
 
-<!-- 全屏开屏闪出黑幕容器 (通过 fixed 悬浮在 home 布局最上方) -->
+<!-- 全屏开屏闪出黑幕容器 -->
 <div id="splash-screen" style="
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background-color: #050814; z-index: 99999;
@@ -31,14 +31,18 @@ posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
 <script>
 (function() {
     let quotes = [];
-    {% if site.data.highlights %}
-      quotes = {{ site.data.highlights | jsonify }};
+    
+    // 读取 _data/highlight.json
+    {% if site.data.highlight %}
+      quotes = {{ site.data.highlight | jsonify }};
     {% endif %}
 
+    // 默认保底数据，仅保留 text, date, sender
     if (!quotes || quotes.length === 0) {
         quotes = [{
-            "text": "写小说最难的其实不是搭建世界观框架，而是如何让角色在日常不经意的对话中，自然地长出血肉。",
-            "date": "2026-09-18"
+            "text": "除了焦虑型依恋，还有一个原因，就是我觉得他们容易撼动，进而肯定了我的存在。同时容易撼动，让我觉得，有可能性他们能改变。这对我一个很厉害的女性来说，是很大的诱惑。",
+            "date": "2026-08-14",
+            "sender": "Christina"
         }];
     }
 
@@ -50,15 +54,19 @@ posts_limit: 5         # 未开启分页时，首页展示的最新文章数量
         const splashEl = document.getElementById('splash-screen');
 
         if (textEl && dateEl && splashEl) {
+            // 仅提取 text 进行渲染
             textEl.innerText = "「 " + selected.text + " 」";
-            dateEl.innerText = "—— " + selected.date;
+            
+            // 动态读取 sender，如果不为空则自动加上括号，例如：—— 2026-08-14 (May)
+            let senderName = selected.sender ? " (" + selected.sender + ")" : "";
+            dateEl.innerText = "—— " + selected.date + senderName;
 
             setTimeout(function() {
                 textEl.style.opacity = '1';
                 dateEl.style.opacity = '1';
             }, 200);
 
-            // 3.5秒后黑幕淡出，无缝露出底层的 So Simple home 页面
+            // 3.5秒后黑幕淡出
             setTimeout(function() {
                 splashEl.style.opacity = '0';
                 splashEl.style.pointerEvents = 'none';
