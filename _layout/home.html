@@ -1,0 +1,123 @@
+---
+layout: page
+---
+
+<!-- 注入 index.md 中的文本 (如有) -->
+{{ content }}
+
+<!-- ================= 开屏黑幕 ================= -->
+<style>
+  .splash-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #050814; z-index: 99999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: #ffffff; padding: 1.5rem; box-sizing: border-box;
+    transition: opacity 1.2s ease-out; pointer-events: auto;
+  }
+  .splash-text { font-size: 1.15rem; text-align: center; line-height: 1.6; letter-spacing: 1px; opacity: 0; transition: opacity 1.2s ease-in; }
+  .splash-date { font-size: 0.85rem; color: #8B949E; margin-top: 20px; opacity: 0; transition: opacity 1.2s ease-in; }
+  @media (min-width: 768px) { .splash-text { font-size: 1.4rem; max-width: 80%; } }
+</style>
+<div id="splash-screen" class="splash-overlay">
+    <div id="splash-quote-text" class="splash-text"></div>
+    <div id="splash-quote-date" class="splash-date"></div>
+</div>
+
+<!-- ================= 灵犀微光：对话引用卡片 ================= -->
+<div class="entries-list" style="margin-bottom: 2.5rem;">
+    <!-- 去掉了容易导致隐身的 visibility: hidden，保证安全 -->
+    <article class="archive__item" id="native-quote-card">
+      <h2 class="archive__item-title" id="body-quote-text" style="font-weight: 400; font-style: italic; line-height: 1.6;"></h2>
+      <div class="archive__item-excerpt" style="margin-top: 10px; font-size: 0.85em; color: var(--text-muted-color, #666);">
+        <strong id="body-quote-sender" style="color: var(--primary-color);"></strong> 
+        <span style="margin: 0 0.5em;">|</span>
+        <span id="body-quote-date"></span>
+      </div>
+    </article>
+  </div>
+  
+  <!-- ================= 这里是你之前可能保留的横向滑动传送门代码 (如有) ================= -->
+  {% if site.data.home_blocks %}
+  <div class="home-portals-wrapper" style="margin-top: 4rem;">
+    <h2 class="archive__subtitle" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted-color); margin-bottom: 1.5rem; border: none;">Explore</h2>
+    <div class="scrolling-wrapper" style="display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem; scrollbar-width: thin; scrollbar-color: var(--primary-color) transparent; -webkit-overflow-scrolling: touch;">
+      {% for block in site.data.home_blocks %}
+        <a href="{{ block.url }}" style="flex: 0 0 280px; text-decoration: none; border-radius: 12px; overflow: hidden; background: var(--background-color); border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="height: 160px; background-image: url('{{ block.image }}'); background-size: cover; background-position: center;"></div>
+          <div style="padding: 1.25rem;">
+            <div style="font-size: 0.75rem; color: var(--text-muted-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem;">{{ block.subtitle }}</div>
+            <h3 style="font-size: 1.2rem; margin: 0 0 0.5rem 0; color: var(--text-color);">{{ block.title }}</h3>
+            <p style="font-size: 0.85rem; color: #666; margin: 0; line-height: 1.5;">{{ block.description }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- ================= 核心渲染脚本 (已增加防穿透与强制刷新防护) ================= -->
+  <script>
+  (function() {
+      try {
+          let quotes = [];
+          {% if site.data.highlight %}
+            quotes = {{ site.data.highlight | jsonify }};
+          {% endif %}
+          
+          if (!quotes || quotes.length === 0) {
+              quotes = [{"text": "除了焦虑型依恋，还有一个原因，就是我觉得他们容易撼动，进而肯定了我的存在。", "date": "2026-08-14", "sender": "Christina"}];
+          }
+          
+          const selected = quotes[Math.floor(Math.random() * quotes.length)];
+          
+          // 1. 卡片立刻原地填空（由于去掉了监听器，执行到这里时必定填入数据）
+          const bodyText = document.getElementById('body-quote-text');
+          const bodySender = document.getElementById('body-quote-sender');
+          const bodyDate = document.getElementById('body-quote-date');
+          
+          if (bodyText && bodySender && bodyDate) {
+              bodyText.innerText = "“" + selected.text + "”";
+              bodySender.innerText = selected.sender ? selected.sender : "未知";
+              bodyDate.innerText = selected.date;
+          }
+  
+          // 2. 开屏动画重置与渲染
+          const splashScreen = document.getElementById('splash-screen');
+          const splashText = document.getElementById('splash-quote-text');
+          const splashDate = document.getElementById('splash-quote-date');
+          
+          if (splashScreen && splashText && splashDate) {
+              // 每次强制重置黑幕为初始状态，对抗浏览器缓存
+              splashScreen.style.display = 'flex';
+              splashScreen.style.opacity = '1';
+              splashScreen.style.pointerEvents = 'auto';
+              
+              splashText.innerText = "「 " + selected.text + " 」";
+              splashDate.innerText = "—— " + selected.date + (selected.sender ? " (" + selected.sender + ")" : "");
+              
+              // 触发文字淡入
+              setTimeout(function() { 
+                  splashText.style.opacity = '1'; 
+                  splashDate.style.opacity = '1'; 
+              }, 50);
+  
+              // 5.5秒后黑幕退场
+              setTimeout(function() {
+                  splashScreen.style.opacity = '0';
+                  splashScreen.style.pointerEvents = 'none';
+                  setTimeout(function() { splashScreen.style.display = 'none'; }, 1200);
+              }, 5500);
+          }
+      } catch (e) {
+          console.error("Quote load error:", e);
+      }
+  })();
+  
+  // 3. 终极防护：针对 iOS Safari 等浏览器的“侧滑返回假死”机制 (BFCache)
+  window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+          // 如果是从缓存中强制恢复的页面，直接刷新重摇一次抽签
+          window.location.reload();
+      }
+  });
+  </script>

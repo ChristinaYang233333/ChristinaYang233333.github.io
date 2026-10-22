@@ -1,0 +1,17 @@
+- title: "镜头侧写"
+  subtitle: "Visual Fragments"
+  description: "用光影记录世界的皮肤与肌理。"
+  url: "/gallery/"
+  image: "https://via.placeholder.com/600x400" # 替换为实际图床链接
+
+- title: "造梦空间"
+  subtitle: "Dream Space"
+  description: "在日常的对话与留白中，让角色长出血肉。"
+  url: "/categories/fiction/" 
+  image: "https://via.placeholder.com/600x400"
+
+- title: "专业视野"
+  subtitle: "Professional Vision"
+  description: "关于出海、商业化与智能方案落地的行业复盘。"
+  url: "/categories/business/" 
+  image: "https://via.placeholder.com/600x400"
