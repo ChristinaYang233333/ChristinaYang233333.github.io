@@ -1,0 +1,356 @@
+---
+layout: page
+---
+
+{{ content }}
+
+<style>
+  .home-splash {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    background:
+      radial-gradient(ellipse at 50% 30%, #1a2340 0%, #050814 62%);
+    color: #fff;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+  .home-splash.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .home-splash__mark {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #8b949e;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .home-splash__text {
+    max-width: 40rem;
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    letter-spacing: 0.04em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.1s ease;
+  }
+  .home-splash__meta {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #8b949e;
+    opacity: 0;
+    transition: opacity 1.1s ease;
+  }
+  .home-splash.is-ready .home-splash__mark,
+  .home-splash.is-ready .home-splash__text,
+  .home-splash.is-ready .home-splash__meta {
+    opacity: 1;
+  }
+  @media (min-width: 768px) {
+    .home-splash__text { font-size: 1.45rem; }
+  }
+
+  .home-quote {
+    position: relative;
+    margin: 0 0 2.75rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border: 1px solid var(--border-color, #e5e5e5);
+    border-radius: 14px;
+    background: var(--background-color, #fff);
+    box-shadow: 0 8px 28px rgba(5, 8, 20, 0.06);
+  }
+  .home-quote__kicker {
+    margin: 0 0 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted-color, #888);
+  }
+  .home-quote blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .home-quote__text {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-color, #222);
+  }
+  .home-quote__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin-top: 1.1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted-color, #666);
+  }
+  .home-quote__sender {
+    color: var(--primary-color, #6f777d);
+    font-weight: 600;
+  }
+  .home-quote__context {
+    margin: 0.85rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--text-muted-color, #777);
+  }
+  .home-quote__shuffle {
+    margin-left: auto;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted-color, #666);
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+  .home-quote__shuffle:hover {
+    border-color: var(--primary-color, #6f777d);
+    color: var(--primary-color, #6f777d);
+  }
+
+  .home-portals {
+    margin: 0 0 3rem;
+  }
+  .home-portals__title {
+    margin: 0 0 1.25rem;
+    border: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted-color, #888);
+  }
+  .home-portals__track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.15rem 1.35rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color, #6f777d) transparent;
+  }
+  .home-portal {
+    flex: 0 0 min(280px, 82vw);
+    scroll-snap-align: start;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border-color, #e5e5e5);
+    border-radius: 14px;
+    background: var(--background-color, #fff);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+  }
+  .home-portal:hover,
+  .home-portal:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(5, 8, 20, 0.12);
+  }
+  .home-portal__cover {
+    height: 148px;
+    background-color: #1a2340;
+    background-size: cover;
+    background-position: center;
+  }
+  .home-portal:nth-child(1) .home-portal__cover { background-image: linear-gradient(135deg, #2c3e6b, #7f8cbf); }
+  .home-portal:nth-child(2) .home-portal__cover { background-image: linear-gradient(135deg, #3d2a4a, #c089a8); }
+  .home-portal:nth-child(3) .home-portal__cover { background-image: linear-gradient(135deg, #1e3d3a, #7eb8a8); }
+  .home-portal__body { padding: 1.15rem 1.2rem 1.3rem; }
+  .home-portal__subtitle {
+    margin: 0 0 0.3rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted-color, #888);
+  }
+  .home-portal__title {
+    margin: 0 0 0.45rem;
+    font-size: 1.15rem;
+    color: var(--text-color, #222);
+  }
+  .home-portal__desc {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-muted-color, #666);
+  }
+
+  .home-recent > .archive__subtitle,
+  .home-recent .archive__subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-splash,
+    .home-splash__mark,
+    .home-splash__text,
+    .home-splash__meta,
+    .home-portal {
+      transition: none;
+    }
+  }
+</style>
+
+<noscript>
+  <style>.home-splash { display: none !important; }</style>
+</noscript>
+<div id="splash-screen" class="home-splash" role="dialog" aria-label="开场引言" aria-modal="true">
+  <div class="home-splash__mark">Christina's 数字花园</div>
+  <p id="splash-quote-text" class="home-splash__text"></p>
+  <div id="splash-quote-date" class="home-splash__meta"></div>
+</div>
+
+<article class="home-quote" id="native-quote-card">
+  <p class="home-quote__kicker">灵犀微光</p>
+  <blockquote>
+    <p id="body-quote-text" class="home-quote__text"></p>
+  </blockquote>
+  <div class="home-quote__footer">
+    <strong id="body-quote-sender" class="home-quote__sender"></strong>
+    <span aria-hidden="true">·</span>
+    <span id="body-quote-date"></span>
+    <button type="button" class="home-quote__shuffle" id="quote-shuffle" aria-label="换一句引言">换一句</button>
+  </div>
+  <p id="body-quote-context" class="home-quote__context" hidden></p>
+</article>
+
+{% assign portals = site.data.home_blocks %}
+{% if portals == nil or portals.size == 0 %}
+  {% assign portals = site.data.home_bolcks %}
+{% endif %}
+{% if portals %}
+<div class="home-portals">
+  <h2 class="home-portals__title">Explore</h2>
+  <div class="home-portals__track">
+    {% for block in portals %}
+      <a class="home-portal" href="{{ block.url | relative_url }}">
+        {% assign cover = block.image | default: "" %}
+        <div class="home-portal__cover"{% unless cover == "" or cover contains "placeholder" %} style="background-image: url('{{ cover }}');"{% endunless %}></div>
+        <div class="home-portal__body">
+          <div class="home-portal__subtitle">{{ block.subtitle }}</div>
+          <h3 class="home-portal__title">{{ block.title }}</h3>
+          <p class="home-portal__desc">{{ block.description }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div class="home-recent">
+{%- if site.plugins contains 'jekyll-paginate' and page.paginate or site.gems contains 'jekyll-paginate' and page.paginate -%}
+  {% include posts-paginated.html %}
+{%- else -%}
+  {% include posts-limit.html %}
+{%- endif -%}
+</div>
+
+<script>
+(function () {
+  var quotes = [];
+  {% if site.data.highlight %}
+  quotes = {{ site.data.highlight | jsonify }};
+  {% endif %}
+  if (!quotes || !quotes.length) {
+    quotes = [{
+      text: "除了焦虑型依恋，还有一个原因，就是我觉得他们容易撼动，进而肯定了我的存在。",
+      date: "2026-08-14",
+      sender: "Christina"
+    }];
+  }
+
+  var bodyText = document.getElementById("body-quote-text");
+  var bodySender = document.getElementById("body-quote-sender");
+  var bodyDate = document.getElementById("body-quote-date");
+  var bodyContext = document.getElementById("body-quote-context");
+  var splash = document.getElementById("splash-screen");
+  var splashText = document.getElementById("splash-quote-text");
+  var splashDate = document.getElementById("splash-quote-date");
+  var shuffleBtn = document.getElementById("quote-shuffle");
+  var lastIndex = -1;
+
+  function pickQuote() {
+    if (quotes.length === 1) return quotes[0];
+    var index = Math.floor(Math.random() * quotes.length);
+    if (index === lastIndex) index = (index + 1) % quotes.length;
+    lastIndex = index;
+    return quotes[index];
+  }
+
+  function renderQuote(selected, withSplash) {
+    if (!selected) return;
+    var text = selected.text || "";
+    var sender = selected.sender || "未知";
+    var date = selected.date || "";
+
+    if (bodyText) bodyText.textContent = "“" + text + "”";
+    if (bodySender) bodySender.textContent = sender;
+    if (bodyDate) bodyDate.textContent = date;
+    if (bodyContext) {
+      if (selected.context) {
+        bodyContext.hidden = false;
+        bodyContext.textContent = selected.context;
+      } else {
+        bodyContext.hidden = true;
+        bodyContext.textContent = "";
+      }
+    }
+    if (withSplash && splash && splashText && splashDate) {
+      splashText.textContent = "「 " + text + " 」";
+      splashDate.textContent = "—— " + date + (sender ? " · " + sender : "");
+    }
+  }
+
+  function hideSplash() {
+    if (!splash || splash.classList.contains("is-hidden")) return;
+    splash.classList.remove("is-ready");
+    splash.classList.add("is-hidden");
+    splash.setAttribute("aria-hidden", "true");
+    window.setTimeout(function () {
+      splash.style.display = "none";
+    }, 1000);
+  }
+
+  function showSplash() {
+    if (!splash) return;
+    splash.style.display = "flex";
+    splash.classList.remove("is-hidden");
+    splash.removeAttribute("aria-hidden");
+    window.requestAnimationFrame(function () {
+      splash.classList.add("is-ready");
+    });
+    window.setTimeout(hideSplash, 5500);
+  }
+
+  renderQuote(pickQuote(), true);
+  showSplash();
+
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener("click", function () {
+      renderQuote(pickQuote(), false);
+    });
+  }
+
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) window.location.reload();
+  });
+})();
+</script>
