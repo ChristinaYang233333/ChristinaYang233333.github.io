@@ -1,0 +1,17 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+.DS_Store
+Thumbs.db
+
+# 聊天原始导出与清洗稿不得进入本公开仓库
+数据处理/
+raw materials/
+私聊_May_*.json
+聊天记录_*.json
+金句表达_*.json
+话题集整理_*.json
+_dryrun_*.json
